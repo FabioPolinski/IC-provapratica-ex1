@@ -63,6 +63,7 @@ public class Path implements Cloneable{
 	private Path(Path copyOf) {
 		this.Order = copyOf.Order.clone();
 		this.nID = copyOf.nID;
+		this.nFitness = copyOf.nFitness;
 	}
 	
 	
@@ -231,7 +232,7 @@ public class Path implements Cloneable{
 		//remove last character
 		cReturn = cReturn.substring(0, cReturn.length() - 1);
 		
-		cReturn = cReturn + "  {" + this.nFitness + "}";
+		//cReturn = cReturn + "  {" + this.nFitness + "}";
 		
 		//used for debugging reasons
 		//cReturn = cReturn + "  {" + System.identityHashCode(this) + "}";
@@ -249,7 +250,8 @@ public class Path implements Cloneable{
 	 * 		  indicated by their names (name based),
 	 * 		  current fitness and total distance as
 	 * 		  a one line info string
-	 */
+	 * */
+	 
 	public String getInfo(VertexSet vs) {
 		
 		int nIndex;
@@ -275,9 +277,6 @@ public class Path implements Cloneable{
 		
 		return cReturn;
 	}
-	
-	
-	
 	
 	/**
 	 * gets the path's fitness
@@ -325,6 +324,8 @@ public class Path implements Cloneable{
         return result;
     }
 	
-	
+	public int[] getPath() {
+		return this.Order;
+	}
 	
 }
